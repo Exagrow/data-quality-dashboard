@@ -1,7 +1,7 @@
 # data-quality-dashboard
 
-A live data quality dashboard on real public data: every Uber and Lyft trip
-reported to the NYC Taxi & Limousine Commission (TLC). It is the reference
+A live data quality dashboard on real public data: [every Uber and Lyft trip
+reported to the NYC Taxi & Limousine Commission (TLC)](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page). It is the reference
 dashboard from the DAMA-MN workshop "Building a Live Data Quality Dashboard with
 Claude Code" (October 2026), by [Exagrow](https://exagrow.com).
 
