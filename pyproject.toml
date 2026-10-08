@@ -1,6 +1,6 @@
 [project]
 name = "data-quality-dashboard"
-version = "0.5.0"
+version = "1.0.0"
 description = "A live data quality dashboard on NYC rideshare trip records, from the DAMA-MN workshop Building a Live Data Quality Dashboard with Claude Code"
 requires-python = ">=3.12,<3.14"
 # Only the build-time data loader is Python; the site itself is static.
