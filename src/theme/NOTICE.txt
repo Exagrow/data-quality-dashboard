@@ -1,0 +1,13 @@
+src/theme/: Exagrow design. All rights reserved.
+
+Copyright (c) 2026 Exagrow Consulting LLC. Not covered by the MIT licence;
+included for reference only. See LICENSE.md.
+
+To make the dashboard your own, replace everything in this folder. Nothing
+outside it defines a colour, a typeface or a logo.
+
+  1. logo.svg, logo-reversed.svg, favicon.svg: your own marks.
+  2. colors.css: your values. Keep the token names.
+  3. typography.css: your font import and two families.
+  4. brand.js: your name and link.
+  5. Delete this notice.

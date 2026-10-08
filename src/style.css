@@ -1,0 +1,15 @@
+/* Framework's defaults, then the theme, then the layout.
+   The observablehq: imports have to stay in a file Framework owns.
+   theme/ is the brand: every colour and typeface is defined there and nowhere
+   else (see theme/NOTICE.txt). kit/kit.css is the shared layout and chrome.
+   What follows is this dashboard's own: the page tabs, the Data Quality tab's
+   scorecard and rule cards, and the UI Design Reference tab's examples. */
+@import url("observablehq:default.css");
+@import url("observablehq:theme-air.css");
+@import "./theme/typography.css";
+@import "./theme/colors.css";
+@import "./kit/kit.css";
+@import "./components/controls.css";
+@import "./components/tabs.css";
+@import "./components/quality.css";
+@import "./components/uiref.css";

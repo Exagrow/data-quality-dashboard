@@ -1,0 +1,7 @@
+/dist/
+node_modules/
+src/.observablehq/cache/
+.venv/
+__pycache__/
+data/tlc/.*.partial/
+data/raw/

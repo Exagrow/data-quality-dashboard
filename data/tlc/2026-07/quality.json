@@ -1,0 +1,123 @@
+{
+ "month": "2026-07",
+ "file": {
+  "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2026-07.parquet",
+  "bytes": 511176663,
+  "last_modified": "2026-09-17T14:43:53+00:00",
+  "created_by": "parquet-cpp-arrow version 21.0.0",
+  "rows": 20921249
+ },
+ "published": "2026-09-17",
+ "lag_days": 48,
+ "rows_by_license": {
+  "HV0003": 15215374,
+  "HV0005": 5705875
+ },
+ "schema": [
+  [
+   "hvfhs_license_num",
+   "VARCHAR"
+  ],
+  [
+   "dispatching_base_num",
+   "VARCHAR"
+  ],
+  [
+   "originating_base_num",
+   "VARCHAR"
+  ],
+  [
+   "request_datetime",
+   "TIMESTAMP"
+  ],
+  [
+   "on_scene_datetime",
+   "TIMESTAMP"
+  ],
+  [
+   "pickup_datetime",
+   "TIMESTAMP"
+  ],
+  [
+   "dropoff_datetime",
+   "TIMESTAMP"
+  ],
+  [
+   "PULocationID",
+   "INTEGER"
+  ],
+  [
+   "DOLocationID",
+   "INTEGER"
+  ],
+  [
+   "trip_miles",
+   "DOUBLE"
+  ],
+  [
+   "trip_time",
+   "BIGINT"
+  ],
+  [
+   "base_passenger_fare",
+   "DOUBLE"
+  ],
+  [
+   "tolls",
+   "DOUBLE"
+  ],
+  [
+   "bcf",
+   "DOUBLE"
+  ],
+  [
+   "sales_tax",
+   "DOUBLE"
+  ],
+  [
+   "congestion_surcharge",
+   "DOUBLE"
+  ],
+  [
+   "airport_fee",
+   "DOUBLE"
+  ],
+  [
+   "tips",
+   "DOUBLE"
+  ],
+  [
+   "driver_pay",
+   "DOUBLE"
+  ],
+  [
+   "shared_request_flag",
+   "VARCHAR"
+  ],
+  [
+   "shared_match_flag",
+   "VARCHAR"
+  ],
+  [
+   "access_a_ride_flag",
+   "VARCHAR"
+  ],
+  [
+   "wav_request_flag",
+   "VARCHAR"
+  ],
+  [
+   "wav_match_flag",
+   "VARCHAR"
+  ],
+  [
+   "cbd_congestion_fee",
+   "DOUBLE"
+  ]
+ ],
+ "trips": {
+  "Lyft": 5705875,
+  "Uber": 15215374
+ },
+ "checked_at": "2026-10-05T19:42:03+00:00"
+}

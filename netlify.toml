@@ -1,0 +1,26 @@
+# The dashboard on Netlify, refreshing itself once a month with nobody pushing.
+#
+#   1. netlify/functions/monthly-rebuild.mjs runs on a schedule and asks Netlify
+#      to rebuild the site (a build hook, kept in the BUILD_HOOK_URL env var).
+#   2. The build restores the results earlier builds computed from Netlify Blobs
+#      (plugins/results-cache), then runs the hosted step: any month in the
+#      window with no results is downloaded from TLC, checked against the
+#      quality rules, summarised, and its raw file thrown away. At most three
+#      months a build, newest first. It never fails the build.
+#   3. The site is built from data/tlc/.
+#   4. When the deploy succeeds, netlify/functions/deploy-succeeded.mjs copies
+#      the results into the permanent Blobs store "tlc-results", so no month is
+#      computed twice and a redeploy wastes nothing. Results committed from a
+#      laptop are used as they are, and always win over stored ones.
+#
+# Needs one environment variable set in Netlify, never in the repo:
+#   BUILD_HOOK_URL  a build hook for this site (Site configuration, Build hooks)
+[build]
+  command = "python3 -m pip install -q 'duckdb>=1.3' && python3 scripts/fetch_tlc.py --hosted && OBSERVABLE_TELEMETRY_DISABLE=true npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[plugins]]
+  package = "/plugins/results-cache"

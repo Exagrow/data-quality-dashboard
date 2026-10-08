@@ -1,0 +1,734 @@
+{
+ "CMP-01": [
+  {
+   "company": "Lyft",
+   "dispatching_base_num": "B03406",
+   "originating_base_num": null,
+   "wav_request_flag": "N",
+   "pickup_datetime": "2025-09-18 07:31:05"
+  },
+  {
+   "company": "Lyft",
+   "dispatching_base_num": "B03406",
+   "originating_base_num": null,
+   "wav_request_flag": "N",
+   "pickup_datetime": "2025-09-26 11:33:54"
+  },
+  {
+   "company": "Lyft",
+   "dispatching_base_num": "B03406",
+   "originating_base_num": null,
+   "wav_request_flag": "N",
+   "pickup_datetime": "2025-09-24 21:05:58"
+  }
+ ],
+ "CMP-04": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-25 06:06:49",
+   "PULocationID": 74,
+   "DOLocationID": 264,
+   "trip_miles": 0.93,
+   "base_passenger_fare": 8.94
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-10 19:13:01",
+   "PULocationID": 230,
+   "DOLocationID": 264,
+   "trip_miles": 2.44,
+   "base_passenger_fare": 55.41
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-01 17:38:22",
+   "PULocationID": 97,
+   "DOLocationID": 264,
+   "trip_miles": 3.79,
+   "base_passenger_fare": 35.93
+  }
+ ],
+ "CMP-05": [
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-26 09:46:11",
+   "on_scene_datetime": "2025-09-26 09:52:08",
+   "pickup_datetime": "2025-09-26 09:52:08",
+   "dropoff_datetime": "2025-09-26 10:03:12"
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-16 18:00:00",
+   "on_scene_datetime": "2025-09-16 18:03:14",
+   "pickup_datetime": "2025-09-16 18:03:14",
+   "dropoff_datetime": "2025-09-16 18:34:33"
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-03 10:09:01",
+   "on_scene_datetime": "2025-09-03 10:18:02",
+   "pickup_datetime": "2025-09-03 10:18:02",
+   "dropoff_datetime": "2025-09-03 10:29:28"
+  }
+ ],
+ "VAL-03": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-05 23:28:04",
+   "trip_miles": 0.7,
+   "base_passenger_fare": -2.75,
+   "congestion_surcharge": 2.75,
+   "cbd_congestion_fee": 1.5,
+   "tips": 3.0,
+   "driver_pay": 5.38
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-29 18:00:13",
+   "trip_miles": 1.11,
+   "base_passenger_fare": -2.75,
+   "congestion_surcharge": 2.75,
+   "cbd_congestion_fee": 0.0,
+   "tips": 0.0,
+   "driver_pay": 7.46
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-01 21:19:27",
+   "trip_miles": 1.87,
+   "base_passenger_fare": -2.75,
+   "congestion_surcharge": 2.75,
+   "cbd_congestion_fee": 0.0,
+   "tips": 0.0,
+   "driver_pay": 7.66
+  }
+ ],
+ "VAL-04": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-28 07:55:50",
+   "trip_miles": 2.71,
+   "trip_time": 727,
+   "base_passenger_fare": 0.0,
+   "driver_pay": 11.34,
+   "access_a_ride_flag": "N"
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-05 20:44:09",
+   "trip_miles": 0.02,
+   "trip_time": 263,
+   "base_passenger_fare": 0.0,
+   "driver_pay": 0.0,
+   "access_a_ride_flag": "N"
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-07 23:59:57",
+   "trip_miles": 0.32,
+   "trip_time": 183,
+   "base_passenger_fare": 0.0,
+   "driver_pay": 0.0,
+   "access_a_ride_flag": "N"
+  }
+ ],
+ "VAL-06": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-30 08:57:52",
+   "trip_miles": 0.59,
+   "trip_time": 536,
+   "base_passenger_fare": 15.5,
+   "driver_pay": 0.0
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-26 22:58:04",
+   "trip_miles": 0.09,
+   "trip_time": 200,
+   "base_passenger_fare": 6.92,
+   "driver_pay": 0.0
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-15 13:24:29",
+   "trip_miles": 0.01,
+   "trip_time": 116,
+   "base_passenger_fare": 7.19,
+   "driver_pay": 0.0
+  }
+ ],
+ "VAL-07": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-17 12:42:00",
+   "PULocationID": 94,
+   "DOLocationID": 94,
+   "trip_miles": 0.0,
+   "trip_time": 503,
+   "base_passenger_fare": 12.55,
+   "driver_pay": 14.57
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-21 19:51:19",
+   "PULocationID": 55,
+   "DOLocationID": 55,
+   "trip_miles": 0.0,
+   "trip_time": 523,
+   "base_passenger_fare": 7.58,
+   "driver_pay": 5.74
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-27 00:09:27",
+   "PULocationID": 33,
+   "DOLocationID": 33,
+   "trip_miles": 0.0,
+   "trip_time": 214,
+   "base_passenger_fare": 6.2,
+   "driver_pay": 4.0
+  }
+ ],
+ "VAL-08": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-28 19:01:43",
+   "PULocationID": 255,
+   "DOLocationID": 265,
+   "congestion_surcharge": 0.0,
+   "cbd_congestion_fee": 0.0,
+   "airport_fee": 2.0
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-14 07:09:49",
+   "PULocationID": 229,
+   "DOLocationID": 186,
+   "congestion_surcharge": 2.75,
+   "cbd_congestion_fee": 1.5,
+   "airport_fee": 3.0
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-05 12:59:37",
+   "PULocationID": 161,
+   "DOLocationID": 158,
+   "congestion_surcharge": 2.75,
+   "cbd_congestion_fee": 1.5,
+   "airport_fee": 2.0
+  }
+ ],
+ "VAL-09": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-28 19:01:43",
+   "PULocationID": 255,
+   "DOLocationID": 265,
+   "airport_fee": 2.0
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-14 07:09:49",
+   "PULocationID": 229,
+   "DOLocationID": 186,
+   "airport_fee": 3.0
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-05 12:59:37",
+   "PULocationID": 161,
+   "DOLocationID": 158,
+   "airport_fee": 2.0
+  }
+ ],
+ "CNS-01": [
+  {
+   "company": "Lyft",
+   "request_datetime": "2025-09-26 11:45:00",
+   "on_scene_datetime": "2025-09-26 11:33:24",
+   "pickup_datetime": "2025-09-26 11:33:54",
+   "PULocationID": 81,
+   "shared_request_flag": "N"
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-24 11:40:00",
+   "on_scene_datetime": "2025-09-24 11:25:51",
+   "pickup_datetime": "2025-09-24 11:30:29",
+   "PULocationID": 61,
+   "shared_request_flag": "N"
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-28 10:45:00",
+   "on_scene_datetime": "2025-09-28 10:38:04",
+   "pickup_datetime": "2025-09-28 10:44:39",
+   "PULocationID": 262,
+   "shared_request_flag": "N"
+  }
+ ],
+ "CNS-02": [
+  {
+   "company": "Lyft",
+   "request_datetime": "2025-09-26 11:45:00",
+   "on_scene_datetime": "2025-09-26 11:33:24",
+   "pickup_datetime": "2025-09-26 11:33:54",
+   "PULocationID": 81
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-24 11:40:00",
+   "on_scene_datetime": "2025-09-24 11:25:51",
+   "pickup_datetime": "2025-09-24 11:30:29",
+   "PULocationID": 61
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-28 10:45:00",
+   "on_scene_datetime": "2025-09-28 10:38:04",
+   "pickup_datetime": "2025-09-28 10:44:39",
+   "PULocationID": 262
+  }
+ ],
+ "CNS-03": [
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-27 11:10:00",
+   "on_scene_datetime": "2025-09-27 10:49:29",
+   "pickup_datetime": "2025-09-27 10:49:23",
+   "dropoff_datetime": "2025-09-27 11:57:50"
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-19 22:48:40",
+   "on_scene_datetime": "2025-09-19 22:54:03",
+   "pickup_datetime": "2025-09-19 22:43:35",
+   "dropoff_datetime": "2025-09-19 23:53:38"
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-30 01:05:16",
+   "on_scene_datetime": "2025-09-30 01:07:00",
+   "pickup_datetime": "2025-09-30 00:37:39",
+   "dropoff_datetime": "2025-09-30 01:42:13"
+  }
+ ],
+ "CNS-05": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-27 10:49:23",
+   "dropoff_datetime": "2025-09-27 11:57:50",
+   "trip_time": 3621,
+   "trip_miles": 23.0
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-19 22:43:35",
+   "dropoff_datetime": "2025-09-19 23:53:38",
+   "trip_time": 3455,
+   "trip_miles": 34.17
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-30 00:37:39",
+   "dropoff_datetime": "2025-09-30 01:42:13",
+   "trip_time": 1992,
+   "trip_miles": 14.33
+  }
+ ],
+ "CNS-06": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-07 22:41:37",
+   "trip_miles": 2.97,
+   "trip_time": 935,
+   "base_passenger_fare": 7.7,
+   "tips": 5.0,
+   "tolls": 0.0,
+   "driver_pay": 13.96
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-02 22:13:28",
+   "trip_miles": 1.56,
+   "trip_time": 581,
+   "base_passenger_fare": 14.71,
+   "tips": 0.0,
+   "tolls": 0.0,
+   "driver_pay": 21.32
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-18 07:31:05",
+   "trip_miles": 1.839,
+   "trip_time": 986,
+   "base_passenger_fare": 10.79,
+   "tips": 0.0,
+   "tolls": 0.0,
+   "driver_pay": 15.14
+  }
+ ],
+ "CNS-07": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-27 23:24:24",
+   "shared_request_flag": "N",
+   "shared_match_flag": "Y",
+   "base_passenger_fare": 79.5
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-06 04:19:49",
+   "shared_request_flag": "N",
+   "shared_match_flag": "Y",
+   "base_passenger_fare": 8.31
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-02 23:30:22",
+   "shared_request_flag": "N",
+   "shared_match_flag": "Y",
+   "base_passenger_fare": 30.99
+  }
+ ],
+ "CNS-08": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-21 00:20:04",
+   "wav_request_flag": "N",
+   "wav_match_flag": "Y"
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-19 18:55:06",
+   "wav_request_flag": "N",
+   "wav_match_flag": "Y"
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-04 16:18:17",
+   "wav_request_flag": "N",
+   "wav_match_flag": "Y"
+  }
+ ],
+ "CNS-09": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-28 19:01:43",
+   "PULocationID": 255,
+   "DOLocationID": 265,
+   "airport_fee": 2.0,
+   "base_passenger_fare": 77.97
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-14 07:09:49",
+   "PULocationID": 229,
+   "DOLocationID": 186,
+   "airport_fee": 3.0,
+   "base_passenger_fare": 13.02
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-11 12:20:25",
+   "PULocationID": 90,
+   "DOLocationID": 265,
+   "airport_fee": 2.5,
+   "base_passenger_fare": 74.73
+  }
+ ],
+ "CNS-10": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-05 14:02:23",
+   "PULocationID": 138,
+   "DOLocationID": 61,
+   "airport_fee": 0.0,
+   "base_passenger_fare": 59.65
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-21 10:31:21",
+   "PULocationID": 87,
+   "DOLocationID": 138,
+   "airport_fee": 0.0,
+   "base_passenger_fare": 66.72
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-27 18:14:36",
+   "PULocationID": 138,
+   "DOLocationID": 68,
+   "airport_fee": 0.0,
+   "base_passenger_fare": 75.45
+  }
+ ],
+ "CNS-11": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-04 20:19:41",
+   "PULocationID": 41,
+   "DOLocationID": 229,
+   "base_passenger_fare": 27.36,
+   "sales_tax": 0.0,
+   "bcf": 0.0,
+   "access_a_ride_flag": "N"
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-25 14:45:34",
+   "PULocationID": 159,
+   "DOLocationID": 248,
+   "base_passenger_fare": 32.15,
+   "sales_tax": 0.0,
+   "bcf": 0.81,
+   "access_a_ride_flag": "N"
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-21 15:19:27",
+   "PULocationID": 146,
+   "DOLocationID": 7,
+   "base_passenger_fare": 11.33,
+   "sales_tax": 0.0,
+   "bcf": 0.0,
+   "access_a_ride_flag": "N"
+  }
+ ],
+ "CNS-12": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-11 09:23:10",
+   "trip_miles": 0.02,
+   "base_passenger_fare": -2.48,
+   "tolls": 0.0,
+   "sales_tax": 1.53,
+   "congestion_surcharge": 0.0,
+   "cbd_congestion_fee": 0.0,
+   "tips": 0.0,
+   "driver_pay": 0.0
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-30 08:40:50",
+   "trip_miles": 0.48,
+   "base_passenger_fare": -5.98,
+   "tolls": 0.0,
+   "sales_tax": 0.91,
+   "congestion_surcharge": 0.0,
+   "cbd_congestion_fee": 0.0,
+   "tips": 0.0,
+   "driver_pay": 0.0
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-20 12:44:31",
+   "trip_miles": 1.97,
+   "base_passenger_fare": -2.32,
+   "tolls": 0.0,
+   "sales_tax": 1.19,
+   "congestion_surcharge": 0.0,
+   "cbd_congestion_fee": 0.0,
+   "tips": 0.0,
+   "driver_pay": 8.91
+  }
+ ],
+ "ACC-01": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-06 10:01:14",
+   "PULocationID": 218,
+   "DOLocationID": 265,
+   "trip_miles": 6.36,
+   "sales_tax": 1.68
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-09 06:51:49",
+   "PULocationID": 220,
+   "DOLocationID": 265,
+   "trip_miles": 34.16,
+   "sales_tax": 11.43
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-09 21:39:28",
+   "PULocationID": 74,
+   "DOLocationID": 265,
+   "trip_miles": 12.906,
+   "sales_tax": 2.85
+  }
+ ],
+ "RSN-02": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-17 12:40:33",
+   "dropoff_datetime": "2025-09-17 12:41:19",
+   "trip_miles": 0.1,
+   "trip_time": 46,
+   "base_passenger_fare": 7.65,
+   "driver_pay": 4.0
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-18 07:12:11",
+   "dropoff_datetime": "2025-09-18 07:13:05",
+   "trip_miles": 0.01,
+   "trip_time": 54,
+   "base_passenger_fare": 14.7,
+   "driver_pay": 0.86
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-01 07:30:40",
+   "dropoff_datetime": "2025-09-01 07:31:30",
+   "trip_miles": 0.194,
+   "trip_time": 50,
+   "base_passenger_fare": 6.27,
+   "driver_pay": 4.0
+  }
+ ],
+ "RSN-03": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-19 20:39:19",
+   "dropoff_datetime": "2025-09-19 20:39:20",
+   "PULocationID": 124,
+   "DOLocationID": 39,
+   "trip_miles": 0.045,
+   "trip_time": 1
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-24 10:06:06",
+   "dropoff_datetime": "2025-09-24 10:09:22",
+   "PULocationID": 177,
+   "DOLocationID": 196,
+   "trip_miles": 5.27,
+   "trip_time": 196
+  },
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-02 22:01:36",
+   "dropoff_datetime": "2025-09-02 22:01:37",
+   "PULocationID": 145,
+   "DOLocationID": 193,
+   "trip_miles": 0.027,
+   "trip_time": 1
+  }
+ ],
+ "RSN-04": [
+  {
+   "company": "Lyft",
+   "pickup_datetime": "2025-09-10 18:57:53",
+   "dropoff_datetime": "2025-09-10 21:11:20",
+   "PULocationID": 13,
+   "DOLocationID": 265,
+   "trip_miles": 107.609,
+   "trip_time": 8007,
+   "base_passenger_fare": 284.68,
+   "driver_pay": 263.23
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-08 10:45:22",
+   "dropoff_datetime": "2025-09-08 13:42:27",
+   "PULocationID": 231,
+   "DOLocationID": 265,
+   "trip_miles": 106.35,
+   "trip_time": 10625,
+   "base_passenger_fare": 502.23,
+   "driver_pay": 306.59
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-18 13:39:31",
+   "dropoff_datetime": "2025-09-18 16:19:44",
+   "PULocationID": 36,
+   "DOLocationID": 265,
+   "trip_miles": 105.45,
+   "trip_time": 9613,
+   "base_passenger_fare": 298.91,
+   "driver_pay": 286.26
+  }
+ ],
+ "RSN-05": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-26 22:12:43",
+   "trip_miles": 3.6,
+   "trip_time": 1037,
+   "base_passenger_fare": 1.44,
+   "driver_pay": 15.86
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-08 06:41:03",
+   "trip_miles": 4.69,
+   "trip_time": 1164,
+   "base_passenger_fare": 1.48,
+   "driver_pay": 18.6
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-04 12:15:52",
+   "trip_miles": 1.32,
+   "trip_time": 318,
+   "base_passenger_fare": 0.35,
+   "driver_pay": 0.0
+  }
+ ],
+ "RSN-06": [
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-15 08:34:13",
+   "trip_miles": 1.4,
+   "trip_time": 495,
+   "base_passenger_fare": 82.96,
+   "driver_pay": 47.52
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-16 15:51:49",
+   "trip_miles": 1.15,
+   "trip_time": 825,
+   "base_passenger_fare": 82.32,
+   "driver_pay": 48.24
+  },
+  {
+   "company": "Uber",
+   "pickup_datetime": "2025-09-22 18:29:00",
+   "trip_miles": 1.39,
+   "trip_time": 832,
+   "base_passenger_fare": 74.24,
+   "driver_pay": 36.06
+  }
+ ],
+ "RSN-07": [
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-08 15:17:49",
+   "on_scene_datetime": "2025-09-08 17:27:21",
+   "pickup_datetime": "2025-09-08 17:27:21",
+   "dropoff_datetime": "2025-09-08 17:41:11",
+   "trip_miles": 1.4
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-24 21:41:35",
+   "on_scene_datetime": "2025-09-24 23:51:44",
+   "pickup_datetime": "2025-09-24 23:51:44",
+   "dropoff_datetime": "2025-09-24 23:59:12",
+   "trip_miles": 1.56
+  },
+  {
+   "company": "Uber",
+   "request_datetime": "2025-09-07 16:27:48",
+   "on_scene_datetime": "2025-09-07 19:42:24",
+   "pickup_datetime": "2025-09-07 19:42:24",
+   "dropoff_datetime": "2025-09-07 19:43:21",
+   "trip_miles": 0.21
+  }
+ ]
+}

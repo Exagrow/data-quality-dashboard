@@ -1,0 +1,22 @@
+{
+  "name": "data-quality-dashboard",
+  "type": "module",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE.md",
+  "scripts": {
+    "clean": "rimraf src/.observablehq/cache dist",
+    "build": "observable build",
+    "refresh": "uv run scripts/fetch_tlc.py --hosted",
+    "dev": "observable preview"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.7.13",
+    "@observablehq/framework": "1.13.4"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,143 @@
+/* The filter controls. The kit lays the row out; the controls inside it are this page's,
+   because Observable Inputs ships unstyled and hashes its own class names, so everything
+   here targets the elements themselves. Every control is one height, so a row lines up. */
+
+.controls {
+  --control-height: 2.1rem;
+}
+
+/* Observable Inputs gives every label a fixed 120px column. The kit's row already spaces
+   these, so let a label be as wide as its words and no wider. */
+/* A label and its control sit on one line, centred against each other, so a row of filters
+   reads as a row rather than a stack. */
+.controls form[class][class] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controls form[class][class] > div { display: flex; align-items: center; }
+
+/* Inputs' own rules are form.inputs-HASH, and the hash changes every build, so the only way
+   to win on specificity without naming it is to repeat the attribute selector. */
+.controls form[class][class] { width: auto; }
+.controls form[class][class] > label {
+  width: auto;
+  min-width: 0;
+  /* Inputs aligns a label to the top of its row and pads it; both push it off centre. */
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.controls form > label,
+.controls form > div > label:not(:has(input)) {
+  font-family: var(--head);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.controls select,
+.controls input[type="text"],
+.controls input[type="search"],
+.controls input[type="number"] {
+  height: var(--control-height);
+  min-width: 8rem;
+  padding: 0 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--sans-serif);
+  font-size: 14px;
+}
+
+/* One chevron, drawn in currentColor so it follows the theme. */
+.controls select {
+  appearance: none;
+  padding-right: 1.9rem;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 1.05rem center, right 0.75rem center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.controls select:hover,
+.controls input[type="text"]:hover,
+.controls input[type="search"]:hover,
+.controls input[type="number"]:hover { border-color: var(--link); }
+
+.controls :is(select, input, button):focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+/* A radio group reads as one row of choices, each one a target big enough to hit. */
+.controls form > div:has(input[type="radio"]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.35rem;
+  align-items: center;
+}
+
+.controls label:has(input[type="radio"]),
+.controls form:has(> input[type="checkbox"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: var(--control-height);
+  padding: 0 0.6rem 0 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.controls label:has(input[type="radio"]:checked) {
+  border-color: var(--link);
+  background: color-mix(in srgb, var(--cyan) 14%, var(--surface));
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.controls input[type="radio"],
+.controls input[type="checkbox"] {
+  accent-color: var(--cyan);
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.controls form:has(> input[type="checkbox"]) { flex-direction: row-reverse; }
+.controls form:has(> input[type="checkbox"]) > label { color: var(--text); font-weight: 500; }
+
+/* The page's own buttons, for anything the inputs do not cover */
+.button {
+  height: var(--control-height, 2.1rem);
+  padding: 0 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--head);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.button:hover { border-color: var(--link); color: var(--heading); }
+.button:disabled { opacity: 0.5; cursor: default; }
+.button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+@media (max-width: 640px) {
+  .controls { --control-height: 2.75rem; }
+  .controls select,
+  .controls input[type="text"],
+  .controls input[type="search"],
+  .controls input[type="number"] { width: 100%; }
+}

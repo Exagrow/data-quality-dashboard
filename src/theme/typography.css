@@ -1,0 +1,21 @@
+/* Exagrow typography.
+ *
+ * Copyright (c) 2026 Exagrow Consulting LLC. All rights reserved.
+ * Included for reference; not covered by the MIT licence. See LICENSE.md.
+ *
+ * The typefaces are defined in this file and nowhere else: which families are
+ * loaded, in which weights, and which one sets headings and which sets body
+ * text. The stylesheets read --head and --sans-serif. To restyle the dashboard,
+ * replace the import and the two families.
+ *
+ * Albert Sans and Barlow are themselves open fonts (SIL Open Font License),
+ * served by Google Fonts. What is reserved here is Exagrow's choice and pairing
+ * of them as its brand typography, not the fonts.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap");
+
+:root {
+  --head: "Albert Sans", "Barlow", system-ui, sans-serif;
+  --sans-serif: "Barlow", system-ui, sans-serif;
+}

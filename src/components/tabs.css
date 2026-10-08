@@ -1,0 +1,38 @@
+/* The page tabs (components/tabs.js). Theme tokens only: the active tab is underlined
+   in the theme's lead colour (--tab-accent, src/theme/colors.css). */
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0.6rem 0 0.75rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.tab,
+.tab:visited {
+  padding: 0.5rem 1rem 0.45rem;
+  margin-bottom: -2px;
+  border-bottom: 3px solid transparent;
+  border-radius: var(--radius-button) var(--radius-button) 0 0;
+  font-family: var(--head);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.tab:hover { background: var(--surface); color: var(--heading); text-decoration: none; }
+.tab:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.tab.active,
+.tab.active:visited {
+  color: var(--heading);
+  border-bottom-color: var(--tab-accent);
+}
+
+/* Three labels do not fit a phone on one line. The longer ones wrap, and every label
+   sits on the rule so the row still reads as one. */
+@media (max-width: 640px) {
+  .tabs { align-items: flex-end; }
+  .tab { padding: 0.45rem 0.7rem 0.4rem; font-size: 14px; line-height: 1.25; }
+}

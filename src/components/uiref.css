@@ -1,0 +1,567 @@
+/* The UI Design Reference tab (components/uiref.js). Theme tokens only (src/theme/), so
+   every example follows the theme. Classes are prefixed ui- to stay clear of the page's own tabs,
+   cards and controls, which several of the examples resemble on purpose. */
+
+.ui-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.ui-index a,
+.ui-index a:visited {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--head);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ui-index a:hover { border-color: var(--link); color: var(--heading); }
+.ui-index a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.ui-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.ui-grid > .card { margin: 0; }
+
+/* One card per component: what it is, then the working example. */
+/* Each card lends its five rows to the grid, so two cards side by side line up row for row
+   and their Try it boxes start and end together. */
+.ui-entry {
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  scroll-margin-top: 1rem;
+}
+
+.ui-entry [hidden] { display: none !important; }
+.ui-entry h2 { margin: 0; font-size: 20px; font-weight: 700; }
+.ui-entry p { margin: 0; max-width: none; }
+.ui-aka { font-size: 13px; color: var(--muted); }
+.ui-entry .ui-what { margin: 0.6rem 0 0.75rem; font-size: 15px; line-height: 1.45; }
+
+.ui-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 0.9rem;
+  margin: 0 0 1rem;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.ui-facts dt { font-family: var(--head); font-weight: 600; color: var(--muted); }
+.ui-facts dd { margin: 0; }
+
+.ui-demo {
+  position: relative;
+  padding: 1.4rem 1rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--page-bg);
+}
+
+.ui-demo-label {
+  position: absolute;
+  top: -0.65rem;
+  left: 0.75rem;
+  padding: 0 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ui-entry .ui-result { margin-top: 0.75rem; font-size: 13px; color: var(--muted); }
+.ui-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* Buttons beyond the page's own .button */
+.ui-icon-button { width: 2.1rem; padding: 0; font-size: 18px; line-height: 1; }
+
+.button.ui-primary { background: var(--tab-accent); border-color: var(--tab-accent); color: var(--ui-on-accent); }
+.button.ui-primary:hover { color: var(--ui-on-accent); filter: brightness(1.08); }
+.button.ui-danger { color: var(--bad); }
+.button.ui-danger:hover { border-color: var(--bad); color: var(--bad); }
+.button.ui-danger-fill { background: var(--dq-error); border-color: var(--dq-error); color: var(--dq-on-error-fill); }
+.button.ui-danger-fill:hover { color: var(--dq-on-error-fill); filter: brightness(1.1); }
+
+.ui-input {
+  box-sizing: border-box;
+  height: 2.1rem;
+  width: 100%;
+  padding: 0 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--sans-serif);
+  font-size: 14px;
+}
+
+.ui-input:hover { border-color: var(--link); }
+.ui-input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.ui-input[aria-invalid="true"] { border-color: var(--bad); }
+
+/* Anything that floats over the page: the combobox list, the calendar, the popovers. */
+.ui-anchor { position: relative; display: inline-block; }
+
+.ui-float {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: 0 8px 24px var(--overlay-shadow);
+}
+
+/* Accordion and expander */
+.ui-fold {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.ui-accordion .ui-fold + .ui-fold { border-top: 0; }
+.ui-accordion .ui-fold:first-child { border-radius: var(--radius-button) var(--radius-button) 0 0; }
+.ui-accordion .ui-fold:last-child { border-radius: 0 0 var(--radius-button) var(--radius-button); }
+.ui-expander { border-radius: var(--radius-button); }
+
+.ui-fold summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--heading);
+  cursor: pointer;
+  list-style: none;
+}
+
+.ui-fold summary::-webkit-details-marker { display: none; }
+.ui-fold summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
+
+.ui-fold summary::before,
+.ui-twist::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--link);
+  border-bottom: 2px solid var(--link);
+  transform: rotate(-45deg);
+  transition: transform 0.15s;
+}
+
+.ui-fold[open] > summary::before { transform: rotate(45deg); }
+.ui-fold > p { padding: 0 0.8rem 0.75rem 2rem; font-size: 14px; }
+
+.ui-fold > pre {
+  margin: 0 0.8rem 0.8rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-button);
+  background: var(--page-bg);
+  font-size: 12.5px;
+  overflow-x: auto;
+}
+
+/* Carousel */
+.ui-carousel-window { overflow: hidden; border-radius: var(--radius-button); }
+.ui-carousel-track { display: flex; transition: transform 0.3s ease; }
+
+.ui-slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: 7.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--cyan) 35%, var(--border));
+  border-left: 4px solid var(--cyan);
+  border-radius: var(--radius-button);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--cyan) 20%, var(--surface)), color-mix(in srgb, var(--cyan) 5%, var(--surface)));
+}
+
+/* One colour family. The even cards lean toward the link blue; the yellow tab accent
+   mixed into the navy surface as a muddy olive. */
+.ui-slide:nth-child(even) {
+  border-left-color: var(--link);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--link) 22%, var(--surface)), color-mix(in srgb, var(--link) 5%, var(--surface)));
+}
+.ui-slide strong { font-family: var(--head); font-size: 18px; color: var(--heading); }
+.ui-slide span { font-size: 14px; }
+
+.ui-carousel-bar { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.6rem; }
+.ui-dots { display: flex; gap: 0.4rem; margin-right: auto; }
+.ui-carousel-count { font-size: 13px; color: var(--muted); }
+
+.ui-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1.5px solid var(--link);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ui-dot[aria-current="true"] { background: var(--link); }
+.ui-dot:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+/* Combobox */
+.ui-combo { display: block; max-width: 20rem; }
+
+.ui-combo-input {
+  padding-right: 1.9rem;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 1.05rem center, right 0.75rem center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.ui-listbox {
+  width: 100%;
+  max-height: 11.5rem;
+  margin: 0;
+  padding: 0.25rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.ui-listbox li {
+  max-width: none;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border-radius: var(--radius-button);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ui-listbox li.ui-active,
+.ui-listbox li[role="option"]:hover { background: color-mix(in srgb, var(--cyan) 20%, var(--surface)); color: var(--heading); }
+.ui-listbox li[aria-selected="true"] { font-weight: 600; color: var(--heading); }
+.ui-listbox li[aria-selected="true"]::after { content: "\2713"; float: right; color: var(--link); }
+.ui-entry .ui-hint { margin: 0.4rem 0 0; font-size: 12px; color: var(--muted); }
+.ui-listbox .ui-empty { color: var(--muted); cursor: default; }
+
+/* Datepicker */
+.ui-date-field {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 11rem;
+  cursor: pointer;
+}
+
+.ui-date-field svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+
+.ui-calendar { width: 17rem; padding: 0.6rem; }
+.ui-calendar-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
+.ui-calendar-head strong { font-family: var(--head); font-size: 14px; color: var(--heading); }
+.ui-calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.ui-weekdays span { padding: 0.2rem 0; text-align: center; font-size: 12px; color: var(--muted); }
+
+.ui-day {
+  height: 2rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--sans-serif);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ui-day:hover { border-color: var(--link); }
+.ui-day.is-today { border-color: var(--border); font-weight: 600; }
+.ui-day[aria-pressed="true"] { background: var(--tab-accent); border-color: var(--tab-accent); color: var(--ui-on-accent); font-weight: 600; }
+.ui-day:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; }
+
+/* Drawer. The dialog itself is the dimmed page; the panel inside it is the drawer. */
+.ui-drawer {
+  inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.ui-drawer::backdrop { background: var(--backdrop); }
+
+.ui-drawer-panel {
+  position: absolute;
+  inset: 0 0 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(22rem, 88vw);
+  border-left: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: -8px 0 24px var(--overlay-shadow);
+}
+
+.ui-drawer[open] .ui-drawer-panel { animation: ui-drawer-in 0.22s ease-out; }
+@keyframes ui-drawer-in { from { transform: translateX(100%); } }
+
+.ui-drawer[data-side="left"] .ui-drawer-panel {
+  inset: 0 auto 0 0;
+  border-left: 0;
+  border-right: 1px solid var(--border);
+  box-shadow: 8px 0 24px var(--overlay-shadow);
+}
+
+.ui-drawer[data-side="left"][open] .ui-drawer-panel { animation-name: ui-drawer-in-left; }
+@keyframes ui-drawer-in-left { from { transform: translateX(-100%); } }
+
+.ui-drawer[data-side="bottom"] .ui-drawer-panel {
+  inset: auto 0 0 0;
+  width: auto;
+  max-height: min(26rem, 80dvh);
+  border-left: 0;
+  border-top: 1px solid var(--border);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  box-shadow: 0 -8px 24px var(--overlay-shadow);
+}
+
+.ui-drawer[data-side="bottom"][open] .ui-drawer-panel { animation-name: ui-drawer-in-bottom; }
+@keyframes ui-drawer-in-bottom { from { transform: translateY(100%); } }
+
+.ui-drawer header,
+.ui-drawer footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.ui-drawer header { border-bottom: 1px solid var(--border); }
+.ui-drawer footer { justify-content: flex-end; border-top: 1px solid var(--border); }
+.ui-drawer h3 { margin: 0; font-family: var(--head); font-size: 17px; font-weight: 700; color: var(--heading); }
+.ui-drawer-body { flex: 1; padding: 1rem; overflow-y: auto; font-size: 14px; }
+
+.ui-checks { margin: 1rem 0 0; padding: 0; border: 0; }
+.ui-checks legend { padding: 0; margin-bottom: 0.4rem; font-family: var(--head); font-size: 13px; font-weight: 600; color: var(--muted); }
+.ui-checks label,
+.ui-check { display: flex; align-items: center; gap: 0.5rem; min-height: 1.9rem; font-size: 14px; cursor: pointer; }
+.ui-entry input[type="checkbox"] { accent-color: var(--cyan); width: 15px; height: 15px; margin: 0; }
+
+/* Form */
+.ui-form { display: grid; gap: 0.75rem; max-width: 22rem; }
+.ui-field { display: grid; gap: 0.25rem; }
+.ui-field label { font-family: var(--head); font-size: 13px; font-weight: 600; color: var(--muted); }
+.ui-required,
+.ui-error { color: var(--bad); }
+.ui-error { font-size: 13px; }
+.ui-form .ui-result { margin-top: 0; }
+
+/* Popover and popconfirm */
+.ui-pair { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
+.ui-kind { display: block; margin-bottom: 0.35rem; font-family: var(--head); font-size: 12px; font-weight: 600; color: var(--muted); }
+.ui-popover { width: 15.5rem; padding: 0.75rem 0.85rem; font-size: 13.5px; }
+.ui-popover strong { display: block; font-family: var(--head); color: var(--heading); }
+.ui-popover p { margin: 0.4rem 0 0; color: var(--muted); }
+.ui-popover dl { display: grid; grid-template-columns: 1fr max-content; gap: 0.15rem 1rem; margin: 0.5rem 0 0; }
+.ui-popover dt { color: var(--muted); }
+.ui-popover dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.ui-popover .ui-actions { justify-content: flex-end; margin-top: 0.7rem; }
+
+/* Tabs. Drawn smaller than the page's own tabs, which they sit under. */
+.ui-tablist { display: flex; gap: 0.15rem; border-bottom: 2px solid var(--border); }
+
+.ui-tab {
+  margin-bottom: -2px;
+  padding: 0.4rem 0.8rem 0.35rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: var(--radius-button) var(--radius-button) 0 0;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--head);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ui-tab:hover { background: var(--surface); color: var(--heading); }
+.ui-tab[aria-selected="true"] { color: var(--heading); border-bottom-color: var(--tab-accent); }
+.ui-tab:focus-visible,
+.ui-tabpanel:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.ui-tabpanel { padding: 0.8rem 0.2rem 0.2rem; font-size: 14px; }
+
+/* Theme picker: a segmented control, and a sample card that carries its own colours so
+   it can show either theme whatever the page is set to. */
+.ui-segmented {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.ui-seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2rem;
+  padding: 0 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--head);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ui-seg:hover { color: var(--heading); }
+.ui-seg[aria-checked="true"] { background: var(--tab-accent); color: var(--ui-on-accent); }
+.ui-seg:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.ui-lucide { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.ui-theme-sample {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 16rem;
+  margin-top: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--sample-light-border);
+  border-radius: var(--radius-card);
+  background: var(--sample-light-bg);
+  color: var(--sample-light-text);
+  font-size: 13px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.ui-theme-sample strong { font-family: var(--head); font-size: 18px; color: var(--sample-light-heading); }
+.ui-theme-sample[data-theme="dark"] { border-color: var(--sample-dark-border); background: var(--sample-dark-bg); color: var(--sample-dark-text); }
+.ui-theme-sample[data-theme="dark"] strong { color: var(--sample-dark-heading); }
+
+/* Toast. Fixed to the window, outside any card, so it is styled without .ui-entry. */
+.ui-toasts {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(22rem, calc(100vw - 2rem));
+}
+
+.ui-toast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.6rem 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--cyan);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 8px 24px var(--overlay-shadow);
+  font-size: 14px;
+  animation: ui-toast-in 0.2s ease-out;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.ui-toast.is-success { border-left-color: var(--dq-success); }
+.ui-toast.is-error { border-left-color: var(--dq-error); }
+.ui-toast.is-leaving { opacity: 0; transform: translateY(0.5rem); }
+@keyframes ui-toast-in { from { opacity: 0; transform: translateY(0.5rem); } }
+
+.ui-toast-close {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-button);
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ui-toast-close:hover { color: var(--heading); }
+.ui-toast-close:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; }
+
+/* Tree */
+.ui-tree,
+.ui-tree ul { margin: 0; padding: 0; list-style: none; }
+.ui-tree ul { padding-left: 1.25rem; }
+.ui-tree li { max-width: none; margin: 0; outline: none; }
+.ui-tree [aria-expanded="false"] > ul { display: none; }
+
+.ui-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-button);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ui-tree-row:hover { background: var(--surface); }
+.ui-tree li:focus-visible > .ui-tree-row { outline: 2px solid var(--cyan); outline-offset: -2px; }
+.ui-tree li[aria-selected="true"] > .ui-tree-row { background: color-mix(in srgb, var(--cyan) 20%, var(--surface)); color: var(--heading); font-weight: 600; }
+.ui-twist,
+.ui-leaf { display: inline-flex; justify-content: center; flex: none; width: 10px; }
+.ui-tree [aria-expanded="true"] > .ui-tree-row .ui-twist::before { transform: rotate(45deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-carousel-track,
+  .ui-toast,
+  .ui-fold summary::before,
+  .ui-twist::before { transition: none; }
+  .ui-drawer[open] .ui-drawer-panel,
+  .ui-toast { animation: none; }
+}
+
+@media (max-width: 860px) {
+  .ui-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .ui-facts { grid-template-columns: 1fr; gap: 0.1rem; }
+  .ui-facts dd { margin-bottom: 0.4rem; }
+  .ui-input,
+  .ui-entry .button { height: 2.75rem; }
+  .ui-icon-button { width: 2.75rem; }
+  .ui-combo,
+  .ui-form { max-width: none; }
+  .ui-float { max-width: calc(100vw - 4rem); }
+}

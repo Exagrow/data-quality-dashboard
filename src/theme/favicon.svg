@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- NYC Rideshare Operations: the Exagrow mark's rounded navy square, a cyan car. Brand colours only. -->
+  <rect width="32" height="32" rx="8" fill="#212c5e"/>
+  <path d="M7 18.5l2.4-5.6A2.2 2.2 0 0 1 11.4 11.5h9.2a2.2 2.2 0 0 1 2 1.4L25 18.5v6a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5V24H11v.5a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 7 24.5z" fill="#5cd0da"/>
+  <circle cx="11.5" cy="20.5" r="1.7" fill="#212c5e"/>
+  <circle cx="20.5" cy="20.5" r="1.7" fill="#212c5e"/>
+</svg>

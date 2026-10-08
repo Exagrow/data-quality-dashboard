@@ -1,0 +1,139 @@
+/* Exagrow colours.
+ *
+ * Copyright (c) 2026 Exagrow Consulting LLC. All rights reserved.
+ * Included for reference; not covered by the MIT licence. See LICENSE.md.
+ *
+ * Every colour this dashboard uses is defined in this file and nowhere else.
+ * The stylesheets read these tokens with var(), and the charts read them at
+ * runtime through src/kit/palette.js, so there is no second copy to keep in
+ * step. To restyle the dashboard, replace the values here.
+ *
+ * The design rules behind the values:
+ *
+ *   - Light theme leads with Navy and takes Cyan second.
+ *   - Dark theme leads with Yellow in Navy's place (Navy disappears into a
+ *     dark ground) and takes Cyan second.
+ *   - No periwinkle, and nothing that reads as grey.
+ *   - Dark is the default: the page is dark unless <html data-theme="light">.
+ */
+
+/* The brand palette, in the brand guide's order. The order is the design: it is
+   arranged for maximum adjacent contrast, so the first colours picked are
+   always distinct. Reorder with care. */
+:root {
+  --brand-navy: #212c5e;
+  --brand-cyan: #5cd0da;
+  --brand-purple: #664ca1;
+  --brand-orange: #ed7c34;
+  --brand-emerald: #0e9469;
+  --brand-red: #d6203e;
+  --brand-yellow: #f9ca3e;
+  --brand-magenta: #ca49b7;
+  --brand-lime: #88c040;
+  --brand-brown: #935727;
+
+  /* Lifted for the dark ground. Contrast ratios are against the dark card
+     surface (--surface), measured with the WCAG formula; 3:1 is the bar for a
+     graphical object.
+       Purple 2.29:1, lifted to 4.78:1. Kept at high chroma so it reads as
+              violet rather than as the pale blue-violet the rules rule out.
+       Red    3.05:1, lifted to 6.23:1.
+       Brown  2.68:1, lifted to 5.32:1, same hue, lighter.
+     Navy (1.17:1) has no usable lift, so dark drops it and Yellow leads. */
+  --brand-purple-on-dark: #af72f0;
+  --brand-red-on-dark: #ff7b8c;
+  --brand-brown-on-dark: #c98a4b;
+  --brand-lime-on-dark: #9ccf5e;
+
+  /* Deepened for the light ground, where the brand value is too pale for text. */
+  --brand-cyan-on-light: #0b7f8a;
+  --brand-lime-on-light: #4f7d1d;
+
+  --white: #ffffff;
+}
+
+/* Dark (default). */
+:root {
+  --cyan: var(--brand-cyan);
+  --page-bg: #111733;
+  --surface: #19214a;
+  --border: #2d386b;
+  --text: #e9edf8;
+  --muted: #9aa6c7;
+  --heading: var(--white);
+  --link: var(--brand-cyan);
+  --good: var(--brand-lime-on-dark);
+  --bad: var(--brand-red-on-dark);
+  --shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  --overlay-shadow: rgba(0, 0, 0, 0.35);
+  --backdrop: rgba(8, 12, 30, 0.6);
+
+  /* Charts (read by src/kit/palette.js). Nine series on dark, ten on light. */
+  --series: var(--brand-yellow), var(--brand-cyan), var(--brand-purple-on-dark), var(--brand-orange), var(--brand-emerald), var(--brand-red-on-dark), var(--brand-magenta), var(--brand-lime), var(--brand-brown-on-dark);
+  --heat-low: #1f2a52;
+  --heat-high: var(--brand-cyan);
+  --band: var(--brand-cyan);
+  --band-opacity: 0.1;
+
+  /* The page tabs: the active tab is underlined in the theme's lead colour. */
+  --tab-accent: var(--brand-yellow);
+
+  /* Data quality. Severity is the semantic trio; navy text reads on the green
+     (6.0:1) and the yellow (9.0:1), white reads on the red (5.0:1). Verdicts
+     take three other brand colours, so a verdict is never mistaken for a
+     severity. */
+  --dq-success: var(--brand-lime);
+  --dq-warning: var(--brand-yellow);
+  --dq-error: var(--brand-red);
+  --dq-on-light-fill: var(--brand-navy);
+  --dq-on-error-fill: var(--white);
+  --dq-defect: var(--brand-red-on-dark);
+  --dq-business: var(--brand-cyan);
+  --dq-documentation: var(--brand-purple-on-dark);
+
+  /* UI Design Reference. */
+  --ui-on-accent: var(--brand-navy);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --page-bg: #f5f8fc;
+  --surface: var(--white);
+  --border: #dde3f0;
+  --text: var(--brand-navy);
+  --muted: #6b7a9a;
+  --heading: var(--brand-navy);
+  --link: var(--brand-navy);
+  --good: var(--brand-lime-on-light);
+  --bad: var(--brand-red);
+  --shadow: 0 1px 4px rgba(33, 44, 94, 0.07);
+
+  --series: var(--brand-navy), var(--brand-cyan), var(--brand-purple), var(--brand-orange), var(--brand-emerald), var(--brand-red), var(--brand-yellow), var(--brand-magenta), var(--brand-lime), var(--brand-brown);
+  --heat-low: #eaf8fa;
+  --heat-high: var(--brand-navy);
+  --band-opacity: 0.14;
+
+  --tab-accent: var(--brand-navy);
+
+  --dq-defect: var(--brand-red);
+  --dq-business: var(--brand-cyan-on-light);
+  --dq-documentation: var(--brand-purple);
+
+  --ui-on-accent: var(--white);
+
+  color-scheme: light;
+}
+
+/* The UI Design Reference tab shows a light card and a dark card side by side,
+   whatever the page theme is, so these do not follow data-theme. */
+:root {
+  --sample-light-bg: var(--white);
+  --sample-light-border: #dde3f0;
+  --sample-light-text: #3a4566;
+  --sample-light-heading: var(--brand-navy);
+  --sample-dark-bg: #1a2250;
+  --sample-dark-border: #2c3768;
+  --sample-dark-text: #c9d1ea;
+  --sample-dark-heading: var(--white);
+}

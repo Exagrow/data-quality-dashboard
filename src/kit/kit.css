@@ -1,0 +1,206 @@
+/* The dashboard's layout and chrome.
+ *
+ * Framework's default styles with the theme laid over them. This sheet holds no
+ * colour and no typeface: it reads the tokens that src/theme/colors.css and
+ * src/theme/typography.css define, which src/style.css imports ahead of it.
+ * Chart colours reach Plot through palette.js.
+ *
+ * The layout rules:
+ *
+ *   - No faint raw-data lines and no dashed grey rules. Show averages, with a
+ *     shaded band marking the selected period.
+ *   - The theme toggle shows the theme you would switch to: a sun on dark, a
+ *     moon on light.
+ *   - Title on the left; logo and theme toggle on the right, on one line.
+ *   - The data source is a plain line under the header, not a card.
+ */
+
+:root {
+  --radius-card: 7px;
+  --radius-button: 4px;
+}
+
+/* Framework's theme variables, driven by the tokens above. */
+:root,
+:root[data-theme="light"] {
+  --theme-foreground: var(--text);
+  --theme-foreground-focus: var(--link);
+  --theme-background-a: var(--page-bg);
+  --theme-background: var(--page-bg);
+  --theme-background-alt: var(--surface);
+  --theme-foreground-alt: var(--text);
+  --theme-foreground-muted: var(--muted);
+  --theme-foreground-faint: color-mix(in srgb, var(--text) 50%, var(--page-bg));
+  --theme-foreground-fainter: color-mix(in srgb, var(--text) 30%, var(--page-bg));
+  --theme-foreground-faintest: var(--border);
+  --plot-background: var(--surface);
+  --observablehq-max-width: 1280px;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: var(--sans-serif);
+}
+
+a,
+a:visited {
+  color: var(--link);
+}
+
+h1, h2, h3, .big {
+  font-family: var(--head);
+  color: var(--heading);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.card h3 {
+  font-family: var(--sans-serif);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Title on the left; logo and theme toggle on the right, on one line. */
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.25rem 0 0.35rem;
+}
+
+.masthead h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  max-width: none;
+}
+
+.masthead-end {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 26px;
+  width: auto;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-button);
+}
+
+.logo-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
+.logo-on-light { display: none; }
+:root[data-theme="light"] .logo-on-light { display: block; }
+:root[data-theme="light"] .logo-on-dark { display: none; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+  color: var(--heading);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--cyan); }
+.theme-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The icon shows the theme you would switch to: a sun on dark, a moon on light. */
+.icon-moon { display: none; }
+:root[data-theme="light"] .icon-sun { display: none; }
+:root[data-theme="light"] .icon-moon { display: block; }
+
+.source {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 0 0.25rem;
+  max-width: none;
+}
+
+.source strong { color: var(--text); font-weight: 600; }
+
+.lede {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 72ch;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  align-items: center;
+  margin: 1rem 0 0.5rem;
+}
+
+.controls form {
+  width: auto;
+}
+
+.kpi .big {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.kpi .delta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.delta .good { color: var(--good); }
+.delta .bad { color: var(--bad); }
+
+.notes {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 80ch;
+}
+
+.notes strong { color: var(--text); }
+.notes li { margin: 0.25rem 0; }
+
+@media (max-width: 640px) {
+  .masthead h1 { font-size: 21px; }
+  .logo { height: 18px; }
+  .masthead-end { gap: 0.5rem; }
+  .theme-toggle { width: 32px; height: 32px; }
+  .kpi .big { font-size: 22px; }
+  .grid.kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi h2 { font-size: 13px; }
+}

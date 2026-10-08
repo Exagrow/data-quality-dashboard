@@ -1,0 +1,361 @@
+/* The Data Quality tab (components/quality.js). Severity is the semantic trio
+   (--dq-success, --dq-warning, --dq-error) and verdicts are outlined chips in three
+   other colours, so a verdict is never mistaken for a severity. The colours are
+   tokens from src/theme/colors.css.
+   Status classes are is-warning and so on: Framework styles a bare .warning as a callout. */
+
+.pill {
+  display: inline-block;
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--head);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.pill.is-success { background: var(--dq-success); color: var(--dq-on-light-fill); }
+.pill.is-warning { background: var(--dq-warning); color: var(--dq-on-light-fill); }
+.pill.is-error { background: var(--dq-error); color: var(--dq-on-error-fill); }
+.pill.is-pending { background: transparent; color: var(--text); border: 1.5px solid var(--text); padding: 0.04rem 0.5rem; }
+
+.chip {
+  display: inline-block;
+  padding: 0.04rem 0.5rem;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius-button);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip.defect { color: var(--dq-defect); }
+.chip.business { color: var(--dq-business); }
+.chip.documentation { color: var(--dq-documentation); }
+
+/* The scorecard */
+.dq-dimension-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.dq-dimension h2 { margin: 0; font-size: 16px; }
+.dq-dimension h3 { margin: 0.2rem 0 0.6rem; min-height: 2.6em; }
+.dq-dimension .big { font-family: var(--head); font-size: 26px; font-weight: 700; line-height: 1.1; color: var(--heading); }
+.dq-dimension svg { display: block; margin: 0.35rem 0; max-width: 100%; height: auto; }
+.dq-sub { font-size: 13px; color: var(--muted); }
+
+/* ---------------------------------------------------------------------------
+   Width, decided once.
+
+   Framework caps text at about 640px and the kit caps .lede at 72ch, so that a
+   paragraph someone reads in sequence keeps a comfortable measure. That cap is
+   wrong for anything whose job is to label, caption or list what sits under it:
+   held to 640px inside a 1200px page, a single sentence breaks into three lines
+   with half the page empty.
+
+   So: prose inside a rule card keeps its measure, because it is read in
+   sequence and the card is narrow anyway. Everything else here takes the width
+   of the thing it describes.
+   --------------------------------------------------------------------------- */
+.lede,                       /* the sentence under the page title */
+p.dq-sub,                    /* the line under a section heading */
+.dq-group p.dq-group-question,  /* the question under a dimension heading */
+.dq-docs-card h3,            /* the caption over the documentation table */
+.notes,                      /* the reference block that ends the page */
+.notes > p,
+.notes > ul,
+.dq-listing {
+  max-width: none;
+}
+
+
+
+/* The three verdicts, explained once */
+.card > h2 .chip { font-size: 13px; }
+.card > .big { font-family: var(--head); font-size: 24px; font-weight: 700; color: var(--heading); margin-top: 0.5rem; }
+
+/* A rule, folded and open */
+.dq-group-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.75rem 0 0.6rem;
+}
+
+.dq-group h2.dq-group-title { font-size: 20px; margin: 0 0 0.15rem; }
+/* The last rule card in the last dimension sits right under the next section's heading
+   otherwise, because a card carries its own margin and a heading's collapses against it. */
+.dq-group:last-child { margin-bottom: 2.25rem; }
+.dq-group p.dq-group-question { color: var(--muted); margin: 0; }
+.button.dq-collapse { flex: none; }
+
+details.dq-rule { padding: 0; margin: 0 0 0.5rem; }
+details.dq-rule > summary {
+  display: grid;
+  /* Six items, six columns: the id, the name, the test, the chips, the numbers and the
+     hint. Fewer columns than items and the last ones wrap under the row at the left, which
+     is what this looked like before. */
+  grid-template-columns: 4.6rem minmax(9rem, 14rem) minmax(0, 1fr) auto 9.5rem 6.25rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+details.dq-rule > summary::-webkit-details-marker { display: none; }
+details.dq-rule > summary:hover .dq-name { color: var(--link); }
+details.dq-rule > summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+details.dq-rule[open] > summary { border-bottom: 1px solid var(--border); }
+details.dq-rule > summary:hover { background: color-mix(in srgb, var(--cyan) 7%, transparent); }
+
+/* The test, on the closed row, so a reader can scan what each rule does without opening it */
+.dq-test-line {
+  color: var(--muted);
+  font-size: 13.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The affordance: every row says it opens, and the chevron turns when it does. The chevron
+   is a rotated square, so it needs a display that honours width and height: as an inline
+   span it collapses to one border standing on end, which reads as a stray vertical bar. */
+.dq-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding-right: 0.15rem;
+  font-family: var(--head);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--link);
+  white-space: nowrap;
+}
+
+details.dq-rule[open] > summary .dq-open { visibility: hidden; }
+
+.dq-id { font-family: var(--head); font-weight: 700; font-size: 13px; color: var(--muted); }
+.dq-name { font-family: var(--head); font-weight: 600; font-size: 15px; color: var(--heading); }
+.dq-tags { display: flex; gap: 0.4rem; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+.dq-numbers { text-align: right; line-height: 1.15; }
+.dq-count { display: block; font-family: var(--head); font-weight: 700; font-size: 16px; color: var(--heading); }
+.dq-share { display: block; font-size: 12.5px; color: var(--muted); }
+
+.dq-rule-body { padding: 0.25rem 1rem 1rem; }
+.dq-rule-body p { max-width: 90ch; font-size: 14.5px; }
+.dq-chart { margin: 0.75rem 0; }
+.dq-chart svg { max-width: 100%; height: auto; }
+.dq-results { padding-left: 0; list-style: none; font-size: 14.5px; }
+.dq-results li { margin: 0.4rem 0; }
+.dq-scroll { overflow-x: auto; }
+
+table.dq-table { border-collapse: collapse; font-size: 13.5px; margin: 0.5rem 0; max-width: none; width: auto; }
+table.dq-table th,
+table.dq-table td { padding: 0.3rem 0.9rem 0.3rem 0; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
+table.dq-table th { color: var(--muted); font-weight: 600; }
+table.dq-table th:first-child,
+table.dq-table td:first-child { text-align: left; }
+table.dq-example th,
+table.dq-example td { text-align: left; font-variant-numeric: tabular-nums; }
+table.dq-example th { font-family: var(--monospace); font-size: 12px; }
+
+table.dq-reconcile td.fail { color: var(--dq-defect); font-weight: 700; }
+table.dq-reconcile td.ok { color: var(--text); }
+table.dq-reconcile td.pending { color: var(--muted); }
+table.dq-reconcile tr.selected td { background: color-mix(in srgb, var(--cyan) 12%, transparent); }
+
+table.dq-docs td,
+table.dq-docs th { text-align: left; white-space: normal; vertical-align: top; padding-right: 1.25rem; }
+table.dq-docs { width: 100%; }
+
+details.dq-sql { margin-top: 0.75rem; font-size: 13.5px; }
+details.dq-sql summary { cursor: pointer; color: var(--link); }
+details.dq-sql pre { white-space: pre-wrap; word-break: break-word; font-size: 12.5px; background: var(--page-bg); border: 1px solid var(--border); border-radius: var(--radius-button); padding: 0.6rem 0.75rem; }
+
+/* One cell a month, for a rule that passes or fails a whole file */
+.dq-strip { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; max-width: 640px; }
+.dq-cell { padding: 0.35rem 0; border-radius: var(--radius-button); text-align: center; font-family: var(--head); font-size: 12px; font-weight: 700; border: 2px solid transparent; }
+.dq-cell.is-success { background: var(--dq-success); color: var(--dq-on-light-fill); }
+.dq-cell.is-warning { background: var(--dq-warning); color: var(--dq-on-light-fill); }
+.dq-cell.is-error { background: var(--dq-error); color: var(--dq-on-error-fill); }
+.dq-cell.is-pending { border-color: var(--text); color: var(--text); }
+.dq-cell.selected { outline: 2px solid var(--heading); outline-offset: 1px; }
+
+
+/* The rule row has its own stacking rules further down, at 760px. What is left here is the
+   scorecard card, which only needs to give up some height on a phone. */
+@media (max-width: 640px) {
+  .dq-dimension h3 { min-height: 0; }
+  .dq-dimension .big { font-size: 22px; }
+}
+
+/* Show our work: a summary card links down to the rules, which carry the detail */
+a.dq-jump {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--head);
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--link);
+  text-decoration: none;
+}
+a.dq-jump::after { content: " \2193"; }
+a.dq-jump:hover { text-decoration: underline; }
+
+/* The lists in the notes: the bullets above and the sources below. Two columns of flowing
+   text, no rules between the items. A divider per item made a short note look like a row in
+   a table it did not belong to. */
+.dq-listing,
+.notes > ul {
+  columns: 2;
+  column-gap: 3rem;
+  max-width: none;
+  list-style: disc;
+  padding-left: 1.1rem;
+  margin: 0 0 1rem;
+  font-size: 13.5px;
+}
+
+.dq-listing > li,
+.notes > ul > li {
+  break-inside: avoid;
+  margin: 0 0 0.55rem;
+  padding: 0;
+  border: none;
+}
+
+/* The rule in SQL, under the sentence that describes it: two lines, then the whole thing.
+   The fade and the hint only appear when the SQL really is cut off (is-clipped, set once
+   the box knows how wide it ended up). */
+details.dq-formula {
+  margin: 0.5rem 0 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--page-bg);
+}
+
+details.dq-formula > summary {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  cursor: default;
+  list-style: none;
+}
+
+details.dq-formula.is-clipped > summary { cursor: pointer; }
+details.dq-formula > summary::-webkit-details-marker { display: none; }
+details.dq-formula > summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+details.dq-formula.is-clipped:hover { border-color: var(--link); }
+
+.dq-formula-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+.dq-formula-label {
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dq-formula-more {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--head);
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--link);
+  white-space: nowrap;
+}
+
+details.dq-formula.is-clipped > summary .dq-formula-more { display: inline-flex; }
+
+.dq-chevron {
+  /* A flex item shrinks by default, and a square whose size comes from width alone shrinks
+     to nothing, leaving one border standing as a vertical bar. */
+  flex: 0 0 auto;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -0.2rem;
+}
+
+details.dq-formula[open] .dq-chevron { transform: rotate(-135deg); margin-top: 0.15rem; }
+
+.dq-formula-peek-wrap { position: relative; display: block; }
+
+/* The cut edge fades into the box, so two lines do not read as the whole rule. */
+details.dq-formula.is-clipped .dq-formula-peek-wrap::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1.1rem;
+  background: linear-gradient(to bottom, transparent, var(--page-bg));
+  pointer-events: none;
+}
+
+.dq-formula-peek {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+details.dq-formula[open] .dq-formula-peek-wrap { display: none; }
+
+details.dq-formula pre {
+  margin: 0;
+  padding: 0 0.75rem 0.6rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 12.5px;
+  background: none;
+  border: none;
+}
+
+details.dq-formula p.dq-sub { padding: 0 0.75rem 0.7rem; margin: 0; }
+details.dq-formula code { font-size: 12px; word-break: break-word; }
+
+/* The test and the "Details" hint are the first things to go when the row runs out of room:
+   the hint is a nicety, and the test is one tap away inside the card. */
+@media (max-width: 1100px) {
+  details.dq-rule > summary { grid-template-columns: 4.6rem minmax(0, 1fr) auto 9.5rem 6.25rem; }
+  .dq-test-line { display: none; }
+  .dq-open span:not(.dq-chevron) { display: none; }
+}
+
+/* Narrower than about a tablet, five columns stop fitting at any width, so the row stacks:
+   the id and the name on the first line with the chevron, then the verdict and status, then
+   the numbers. A grid cannot do that without fighting, so the row becomes a flex wrap. */
+@media (max-width: 760px) {
+  details.dq-rule > summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.6rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .dq-id { flex: 0 0 4.2rem; }
+  .dq-name { flex: 1 1 8rem; font-size: 14.5px; }
+  .dq-open { order: 2; margin-left: auto; align-self: center; }
+  .dq-tags { order: 3; flex: 1 0 100%; justify-content: flex-start; }
+  .dq-numbers { order: 4; flex: 1 0 100%; display: flex; align-items: baseline; gap: 0.4rem; text-align: left; }
+  .dq-count, .dq-share { display: inline; }
+
+  .dq-group-head { flex-wrap: wrap; align-items: flex-start; }
+  .dq-rule-body { padding: 0.25rem 0.75rem 0.75rem; }
+}
+
+@media (max-width: 640px) {
+  .dq-listing,
+  .notes > ul { columns: 1; }
+}
+
